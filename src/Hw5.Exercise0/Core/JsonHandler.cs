@@ -22,7 +22,7 @@ public static class JsonHandler
 
     public static bool IsValidDate(string date)
     {
-        var todayDate = DateTime.UtcNow.Date.ToShortDateString();
+        var todayDate = DateTime.Today.ToString("dd.MM.yyyy", CultureInfo.InvariantCulture);
         return date.Equals(todayDate, StringComparison.OrdinalIgnoreCase);
     }
 }
