@@ -1,4 +1,5 @@
-﻿using System.Text.Json;
+﻿using System.Globalization;
+using System.Text.Json;
 using Common;
 using Hw5.Exercise0.Models;
 
@@ -21,7 +22,7 @@ public static class JsonHandler
 
     public static bool IsValidDate(string date)
     {
-        var todayDate = DateTime.Today.ToShortDateString();
+        var todayDate = DateTime.UtcNow.Date.ToShortDateString();
         return date.Equals(todayDate, StringComparison.OrdinalIgnoreCase);
     }
 }
