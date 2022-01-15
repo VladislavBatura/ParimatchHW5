@@ -1,22 +1,29 @@
-﻿namespace Hw5.Exercise0.Core;
+﻿using ISO._4217;
+
+namespace Hw5.Exercise0.Core;
 
 public static class ArgumentsHandler
 {
     public static bool IsValidArgs(string[] args)
     {
+        var returnedCurrency = CurrencyCodesResolver.GetCurrenciesByCode(args[0]);
         if (args[0].Length is < 3 or > 3)
         {
             return false;
         }
-        else if (args[0][0] == args[0][1])
+        else if (!returnedCurrency.Any() ||
+                returnedCurrency.First().Code.Equals("xxx", StringComparison.OrdinalIgnoreCase))
         {
             return false;
         }
+
+        returnedCurrency = CurrencyCodesResolver.GetCurrenciesByCode(args[1]);
         if (args[1].Length is < 3 or > 3)
         {
             return false;
         }
-        else if (args[1][0] == args[1][1])
+        else if (!returnedCurrency.Any() ||
+                returnedCurrency.First().Code.Equals("xxx", StringComparison.OrdinalIgnoreCase))
         {
             return false;
         }
